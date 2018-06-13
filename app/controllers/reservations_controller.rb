@@ -18,7 +18,7 @@ class ReservationsController < ApplicationController
   end
 
   def cancel
-    ReservationsHandler.new(current_user, book).cancel_reservation
+    reservation_handler.cancel_reservation
     redirect_to(book_path(book.id))
   end
 

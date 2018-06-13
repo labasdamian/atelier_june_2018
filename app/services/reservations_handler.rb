@@ -4,8 +4,12 @@ class ReservationsHandler
     @book = book
   end
 
+  def can_reserve?
+    book.reservations.find_by(user: user, status: 'RESERVED').nil?
+  end
+
   def reserve
-    return unless can_reserve?(user)
+    return unless can_reserve?
 
     book.reservations.create(user: user, status: 'RESERVED')
   end
