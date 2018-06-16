@@ -2,7 +2,6 @@ class ReservationsController < ApplicationController
   before_action :load_user, only: [:users_reservations]
 
   def reserve
-    # ReservationsHandler.new(current_user, book).reserve
     reservation_handler.reserve
     redirect_to(book_path(book.id))
   end
