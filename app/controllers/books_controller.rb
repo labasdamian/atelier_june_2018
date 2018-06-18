@@ -37,6 +37,8 @@ class BooksController < ApplicationController
   end
 
   def new_book
-    @book = Book.new(title: params[:title], isbn: params[:isbn], category_name: params[:category_name])
+    author = Author.create(firstname: params[:author_first_name], lastname: params[:author_last_name])
+
+    @book = Book.new(title: params[:title], isbn: params[:isbn], category_name: params[:category_name], author_id: author.id)
   end
 end

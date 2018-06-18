@@ -3,6 +3,6 @@ class ReservationsMailer < ApplicationMailer
     @book = book
     @user = user
 
-    mail(to: user.email, subject: "Some super stuff")
+    mail(to: user.email, subject: book.title)
   end
 end

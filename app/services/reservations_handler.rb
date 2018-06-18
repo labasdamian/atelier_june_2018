@@ -5,7 +5,7 @@ class ReservationsHandler
   end
 
   def can_reserve?
-    book.reservations.find_by(user: user, status: 'RESERVED').nil?
+    book.can_reserve?(user)
   end
 
   def reserve
