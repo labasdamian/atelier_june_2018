@@ -1,0 +1,5 @@
+<h2>Hej <%= @borrower.email %></h2>
+<p>
+  Książka <%= @book.title %> będzie za niedługo dostępna.<br>
+  <%= link_to "Przjdź do książki", book_url(@book.id, host: "localhost:3000") %>
+</p>
