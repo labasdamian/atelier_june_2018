@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   get 'books/:book_id/cancel_reservation', to: 'reservations#cancel', as: 'cancel_book_reservation'
   get 'users/:user_id/reservations', to: 'reservations#users_reservations', as: 'users_reservations'
   get 'google-isbn', to: 'google_books#show'
+  get 'books/filter', to: 'books#filter', as: 'filter'
+
+  get 'api/v1/books/lookup', to: 'api/v1/books#lookup'
 
   resources :books
 end
