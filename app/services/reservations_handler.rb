@@ -26,10 +26,12 @@ class ReservationsHandler
     return unless can_take?
 
     if available_reservation.present?
+      perform_expiration_worker(available_reservation)
       available_reservation.update_attributes(status: 'TAKEN')
     else
-      book.reservations.create(user: user, status: 'TAKEN')
+      reservation = book.reservations.create(user: user, status: 'TAKEN')
 
+      perform_expiration_worker(reservation)
       ReservationsMailer.confirmation(book, user).deliver_now
     end
   end
@@ -73,4 +75,8 @@ class ReservationsHandler
 
   private
   attr_reader :user, :book
+
+  def perform_expiration_worker(reservation)
+    ::BookReservationExpireWorker.perform_at(reservation.expires_at-1.day, reservation.book_id)
+  end
 end
