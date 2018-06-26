@@ -13,7 +13,7 @@ class BookNotifierMailer < ApplicationMailer
   def book_reserved_return(book)
     @book = book
     @reservation = book.reservations.find_by(status: 'TAKEN')
-    @reserver = book.reservations.where(status: 'RESERVED').first.try(:user);
+    @reserver = book.reservations.where(status: 'RESERVED').first.try(:user)
 
     return if @reserver.blank? || @reservation.blank?
 

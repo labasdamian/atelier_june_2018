@@ -18,6 +18,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'httparty'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'sidekiq'
+gem 'whenever', require: false
 
 group :development, :test do
   gem 'pry-rails'
